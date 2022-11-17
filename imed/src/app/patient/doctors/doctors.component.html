@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <h1>Profissionas disponiveis</h1>
+    <div class="cols">
+        <div *ngFor="let doctor of doctors;" class="col" ontouchstart="this.classList.toggle('hover');" (click)="openDialog(doctor)">
+            <div class="container">
+                <div class="front" [style.background]='"linear-gradient(" + "#" + createHex() + ", " + "#" + createHex() +")"'>
+                    <div class="inner">
+                        <p>{{doctor.name}}</p>
+                    <span>{{doctor.prof}}</span>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="inner">
+                    <p>Doutor: {{doctor.name}}</p>
+                    <p>Marcado as: {{doctor.prof}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+              
+   </div>
+
+

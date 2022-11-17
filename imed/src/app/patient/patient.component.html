@@ -1,0 +1,2 @@
+<app-menu *ngIf="authService.isLoggedIn$ | async"></app-menu>
+<router-outlet *ngIf="authService.isLoggedIn$ | async"></router-outlet>
