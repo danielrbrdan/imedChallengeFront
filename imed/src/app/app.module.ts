@@ -22,6 +22,7 @@ import { AuthService } from 'src/services/AuthService';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { AuthInterceptorInterceptorProvider } from './auth-interceptor.interceptor';
+import { LoginService } from 'src/services/login.service';
 
 
 
@@ -54,7 +55,8 @@ FullCalendarModule.registerPlugins([
   providers: [
     AuthService,
     AuthGuardGuard,
-    AuthInterceptorInterceptorProvider
+    AuthInterceptorInterceptorProvider,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
