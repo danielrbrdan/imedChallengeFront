@@ -20,18 +20,6 @@ export class DoctorsComponent implements OnInit {
       this.doctors = response
     });
   }
-
-  createHex() :String{
-    let hexCode1 = "";
-    var hexValues1 = "0123456789abcdef";
-    
-    for ( let i = 0; i < 6; i++ ) {
-      hexCode1 += hexValues1.charAt(Math.floor(Math.random() * hexValues1.length));
-    }
-    return hexCode1;
-  }
-
-  
   openDialog(doctor:Object){
     const dialogRef = this.dialog.open(DoctorDialogComponent,{
       data: doctor,

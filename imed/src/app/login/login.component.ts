@@ -40,7 +40,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.authService.login(this.loginForm.value.login!, this.loginForm.value.pass!).subscribe((response: any)=>{
-      this.router.navigate(['/patient/patientAppointments'])
+      this.authService.getUserType().subscribe(response=>{
+        if(response=="PATIENT"){
+          this.router.navigate(['/patient/patientAppointments'])
+        }else if(response=="PROFESSIONAL"){
+          this.router.navigate(['/professional/professionalAppointments'])
+        }
+      })
     },err => {
       this.msg = "Login ou senha invalidos, por favor tente novamente!"
     });

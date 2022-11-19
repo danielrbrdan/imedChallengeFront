@@ -7,13 +7,7 @@ import { API_CONFIG } from "src/config/api.config";
 export class PatientService {
     newUserPatient(login: String, password: String, name: String) {
         let data = { login: login, password: password, name: name}
-        let HTTPOptions:Object = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            }),
-            responseType: 'text'
-         }
-        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/save/patient`, data, HTTPOptions);
+        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/save/patient`, data);
     }
 
     constructor(private http: HttpClient) { }

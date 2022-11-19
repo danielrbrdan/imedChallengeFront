@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,14 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Input() itens: any;
 
   constructor(private router: Router) { }
+
 
   ngOnInit(): void {
   }
 
   routing(path: String): void{
-    this.router.navigate(['patient/'+path])
+    this.router.navigate(['/'+path])
   }
 
 }
