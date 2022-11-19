@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import { AppointmentService } from 'src/services/appointment.service';
+import { AppDialogComponent } from './app-dialog/app-dialog.component';
 
 
 @Component({
@@ -9,14 +11,21 @@ import { AppointmentService } from 'src/services/appointment.service';
   styleUrls: ['./appointments.component.scss']
 })
 export class AppointmentsComponent implements OnInit {
+  appointments: any[] | undefined;
 
   constructor(
     private appointmentService: AppointmentService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.appointmentService.findAll().subscribe(response=>{
-      console.log(response)
+      this.appointments =response; 
+      let events: { title: string; date: any; eventId: any;}[] = [];
+      response.forEach(app => {
+        events.push({title: 'Agendamento: '+app.id+'. Às: '+app.time, date: app.date, eventId: app.id })
+      });
+      this.calendarOptions.events = events;
     });
   }
 
@@ -24,10 +33,7 @@ export class AppointmentsComponent implements OnInit {
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this),
     eventClick:this.eventClick.bind(this),
-    events: [
-      { title: 'event 1', date: '2022-11-01' },
-      { title: 'event 2', date: '2022-11-20' }
-    ]
+    events: []
   };
 
   handleDateClick(arg: Object) {
@@ -35,7 +41,18 @@ export class AppointmentsComponent implements OnInit {
   }
   
   eventClick(arg: EventClickArg) {
+    this.openDialog(this.appointments?.find(i => i.id == arg.event._def.extendedProps['eventId']))
+  }
+
+  openDialog(arg:Object){
     console.log(arg)
+    const dialogRef = this.dialog.open(AppDialogComponent,{
+      data: arg,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit()
+    });
   }
 
 }
