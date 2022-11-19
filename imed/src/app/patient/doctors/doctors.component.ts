@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DoctorService } from 'src/services/doctor.service';
 import { DoctorDialogComponent } from './doctor-dialog/doctor-dialog.component';
 
 
@@ -10,12 +11,14 @@ import { DoctorDialogComponent } from './doctor-dialog/doctor-dialog.component';
 })
 export class DoctorsComponent implements OnInit {
   
-  doctors: { name: string; prof: string; }[] | undefined;
+  doctors: any;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public doctorService: DoctorService) { }
 
   ngOnInit(): void {
-    this.doctors = [{name:"docA", prof:"piscico"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"},{name:"docB", prof:"geral"}]
+    this.doctorService.findAll().subscribe((response: any)=>{
+      this.doctors = response
+    });
   }
 
   createHex() :String{

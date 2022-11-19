@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
+import { AppointmentService } from 'src/services/appointment.service';
 
 
 @Component({
@@ -9,9 +10,14 @@ import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 })
 export class AppointmentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private appointmentService: AppointmentService,
+  ) { }
 
   ngOnInit(): void {
+    this.appointmentService.findAll().subscribe(response=>{
+      console.log(response)
+    });
   }
 
   calendarOptions: CalendarOptions = {

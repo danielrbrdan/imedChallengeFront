@@ -1,2 +1,16 @@
-<p>{{data.name}}</p>
-<button (click)="onNoClick()">close</button>
+
+<form [formGroup]="appointmentForm" (ngSubmit)="newApp()">
+    <p>Dr.(a): {{data.name}}</p>
+    <input formControlName="date" type="date" (change)="loadTimes($event.target)" (ngModel)="date">
+    <br>
+    <div *ngIf="times">
+        <select  name="timer" formControlName="timer" required>
+            <option></option>
+            <option *ngFor="let time of times;" value="{{time}}">{{time}}</option>
+        </select>
+        <label for="timer">Horarios disponiveis</label>
+        <br>
+    </div>
+    <button type="submit">Agendar</button>
+    <button (click)="onNoClick()">Cancelar</button>
+</form>
