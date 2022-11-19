@@ -19,10 +19,11 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentService.findAllProfessionalAppointments().subscribe(response=>{
+      console.log(response)
       this.appointments =response; 
       let events: { title: string; date: any; eventId: any;}[] = [];
       response.forEach(app => {
-        events.push({title: 'Atendimento: '+app.id+'. Às: '+app.time, date: app.date, eventId: app.id })
+        events.push({title: 'Sr.(a): '+app.patient.name+'. Às: '+app.time, date: app.date, eventId: app.id })
       });
       this.calendarOptions.events = events;
     });
