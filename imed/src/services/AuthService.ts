@@ -25,5 +25,21 @@ export class AuthService {
           );
     }
 
+    newUserPatient(user: String, pass: String, name: String){
+        return this.loginService.newUserPatient(user,pass, name).pipe(
+            tap((response: any) => {
+                return response;
+            })
+          );
+    }
+
+    newUserProfessional(user: String, pass: String, name: String, crm: String){
+        return this.loginService.newUserProfessional(user,pass, name, crm).pipe(
+            tap((response: any) => {
+                return response;
+            })
+          );
+    }
+
     
 }
