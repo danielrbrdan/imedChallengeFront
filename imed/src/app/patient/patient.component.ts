@@ -13,4 +13,8 @@ export class PatientComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  itens= [
+    { name: 'Minha agenda', route: 'patient/patientAppointments',},
+    { name: 'Agendar consulta', route: 'patient/patientDoctors', }
+  ]
 }

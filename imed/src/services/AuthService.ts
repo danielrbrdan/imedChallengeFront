@@ -25,6 +25,14 @@ export class AuthService {
           );
     }
 
+    getUserType(){
+        return this.loginService.getUserType().pipe(
+            tap((response: any) => {
+                return response;
+            })
+          );
+    }
+
     newUserPatient(user: String, pass: String, name: String){
         return this.loginService.newUserPatient(user,pass, name).pipe(
             tap((response: any) => {

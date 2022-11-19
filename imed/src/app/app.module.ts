@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { PatientComponent } from './patient/patient.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppointmentsComponent } from './patient/appointments/appointments.component';
+import { AppointmentsComponent as ProfessionalAppointmentsComponent } from './professional/appointments/appointments.component';
+
 import { DoctorsComponent } from './patient/doctors/doctors.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
@@ -27,6 +29,9 @@ import { DoctorService } from 'src/services/doctor.service';
 import { PatientService } from 'src/services/patient.service';
 import { ProfessionalService } from 'src/services/professional.service';
 import { AppointmentService } from 'src/services/appointment.service';
+import { AppDialogComponent } from './patient/appointments/app-dialog/app-dialog.component';
+import { ProfessionalComponent } from './professional/professional.component';
+import { PatientsComponent } from './professional/patients/patients.component';
 
 
 
@@ -43,7 +48,11 @@ FullCalendarModule.registerPlugins([
     MenuComponent,
     AppointmentsComponent,
     DoctorsComponent,
-    DoctorDialogComponent
+    DoctorDialogComponent,
+    AppDialogComponent,
+    ProfessionalComponent,
+    PatientsComponent,
+    ProfessionalAppointmentsComponent
   ],
   imports: [
     BrowserModule,

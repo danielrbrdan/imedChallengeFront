@@ -30,7 +30,7 @@ export class AppDialogComponent implements OnInit {
 
   deleteApp(){
     this.appointmentService.deleteApp(this.data.id).subscribe(response=>{
-      console.log(response);
+      this.dialogRef.close();
     });
   }
 

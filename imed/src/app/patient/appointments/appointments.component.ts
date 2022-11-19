@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import { AppointmentService } from 'src/services/appointment.service';
+import { AuthService } from 'src/services/AuthService';
 import { AppDialogComponent } from './app-dialog/app-dialog.component';
 
 
@@ -15,7 +16,7 @@ export class AppointmentsComponent implements OnInit {
 
   constructor(
     private appointmentService: AppointmentService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {

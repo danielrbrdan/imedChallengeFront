@@ -1,10 +1,6 @@
 <div class="tabbing">
-    <label (click)="routing('/patientAppointments')">
-      <input type="radio" name="menu-tab" id="tab-1" value="tab-1" class="display-none" data_tab_number="1" checked>
-      <div class="tab">Minha agenda</div>
-    </label>
-    <label (click)="routing('/patientDoctors')">
-      <input type="radio" name="menu-tab" id="tab-2" value="tab-2" class="display-none" data_tab_number="2">
-      <div class="tab">Agendar consulta</div>
-    </label>
+  <label *ngFor="let item of itens" (click)="routing(item.route)">
+    <input type="radio" name="menu-tab" id="tab-1" value="tab-1" class="display-none" data_tab_number="1" checked>
+    <div class="tab">{{item.name}}</div>
+  </label>
 </div>
