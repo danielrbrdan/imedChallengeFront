@@ -12,12 +12,13 @@ import { DoctorDialogComponent } from './doctor-dialog/doctor-dialog.component';
 export class DoctorsComponent implements OnInit {
   
   doctors: any;
+  doctorsOrigin: any;
 
   constructor(public dialog: MatDialog, public doctorService: DoctorService) { }
 
   ngOnInit(): void {
     this.doctorService.findAll().subscribe((response: any)=>{
-      this.doctors = response
+      this.doctorsOrigin = this.doctors = response
     });
   }
   openDialog(doctor:Object){
@@ -27,6 +28,12 @@ export class DoctorsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  search(target: any){
+    this.doctors = this.doctorsOrigin.filter((obj: { name: string; crm: string; }) => {
+      return obj.name.includes(target.value) || obj.crm.includes(target.value);
     });
   }
 }

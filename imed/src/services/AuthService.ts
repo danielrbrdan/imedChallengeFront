@@ -17,6 +17,7 @@ export class AuthService {
     }
 
     login(user: String, pass: String){
+        localStorage.removeItem('token');
         return this.loginService.login(user,pass).pipe(
             tap((response: any) => {
               this._isLoggedIn$.next(true);
@@ -34,6 +35,7 @@ export class AuthService {
     }
 
     newUserPatient(user: String, pass: String, name: String){
+        localStorage.removeItem('token');
         return this.loginService.newUserPatient(user,pass, name).pipe(
             tap((response: any) => {
                 return response;
@@ -42,6 +44,7 @@ export class AuthService {
     }
 
     newUserProfessional(user: String, pass: String, name: String, crm: String){
+        localStorage.removeItem('token');
         return this.loginService.newUserProfessional(user,pass, name, crm).pipe(
             tap((response: any) => {
                 return response;

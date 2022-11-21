@@ -1,5 +1,10 @@
 <div class="wrapper">
     <h1>Profissionas disponiveis</h1>
+
+    <div class="search-wrapper">
+        <input type="text" name="focus" required class="search-box" placeholder="Digite para pesquisar" (input)="search($event.target)" />
+    </div>
+
     <div class="cols">
         <div *ngFor="let doctor of doctors;" class="col" ontouchstart="this.classList.toggle('hover');" (click)="openDialog(doctor)">
             <div class="container">
