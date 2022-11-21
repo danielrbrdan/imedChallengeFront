@@ -1,6 +1,13 @@
-<div class="tabbing">
-  <label *ngFor="let item of itens" (click)="routing(item.route)">
-    <input type="radio" name="menu-tab" id="tab-1" value="tab-1" class="display-none" data_tab_number="1" checked>
-    <div class="tab">{{item.name}}</div>
-  </label>
+<!-- Start Navigation Bar -->
+<div class="mobile-menu">
+  <i class="fa fa-bars fa-3x js-menu-icon"></i>
 </div>
+<nav class="navbar js-navbar">
+  <ul class="menu">
+    <li *ngFor="let item of itens" (click)="routing(item.route)">
+      <a>{{item.name}}</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- End Navigation Bar -->
