@@ -13,12 +13,12 @@ export class LoginService {
      }
     newUserPatient(login: String, password: String, name: String) {
         let data = { login: login, password: password, name: name}
-        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/save/patient`, data);
+        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/patient`, data);
     }
 
     newUserProfessional(login: String, password: String, name: String, crm: String) {
         let data = { login: login, password: password , name: name , crm: crm}
-        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/save/professional`, data);
+        return this.http.post<String>(`${API_CONFIG.baseUrl}/api/user/professional`, data);
     }
 
     login(login: String, password: String):Observable<Object>{
@@ -28,7 +28,7 @@ export class LoginService {
     }
 
     getUserType():Observable<Object>{
-        return this.http.get<String>(`${API_CONFIG.baseUrl}/api/user/getUserType`,this.HTTPOptions);
+        return this.http.get<String>(`${API_CONFIG.baseUrl}/api/user/user-type`,this.HTTPOptions);
     }
 
     constructor(private http: HttpClient) { }
