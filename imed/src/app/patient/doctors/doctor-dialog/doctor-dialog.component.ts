@@ -53,7 +53,7 @@ export class DoctorDialogComponent implements OnInit {
   newApp(){
     console.log(this.appointmentForm.value)
     if(this.appointmentForm.value.timer && this.appointmentForm.value.date!){
-      this.appointmentService.newAppointment(this.data.id,this.appointmentForm.value.timer!,this.appointmentForm.value.date!).subscribe(response=>{
+      this.appointmentService.newAppointment(this.data.id, this.appointmentForm.value.timer!, this.appointmentForm.value.date!).subscribe(response=>{
         console.log(response);
         this.dialogRef.close();
       });
